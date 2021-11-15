@@ -74,25 +74,6 @@ class ConsolidatedWeather {
   }
 }
 
-class Location {
-  String title;
-  double woeid;
-  String locationType;
-  String lattLong;
-  double? distance;
-
-  Location(this.title, this.locationType, this.woeid, this.lattLong,
-      {this.distance});
-
-  factory Location.fronJSON(Map<String, dynamic> json) {
-    return Location(
-      json['title'],
-      json['location_type'],
-      json['woeid'],
-      json['latt_long'],
-    );
-  }
-}
 
 class Source {
   String title;
@@ -138,7 +119,7 @@ class Weather {
     this.sources,
   });
 
-  factory Weather.fronJSON(String data) {
+  factory Weather.fronJSONString(String data) {
     Map<String, dynamic> parsedData = jsonDecode(data);
     List<Map<String, dynamic>> cw = parsedData['consolidated_weather'];
     return Weather(
